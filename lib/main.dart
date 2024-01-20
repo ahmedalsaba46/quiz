@@ -5,23 +5,32 @@ import 'package:quiz/questions_page.dart';
 import 'package:quiz/switch.dart';
 
 void main() {
-  runApp(HomePage());
+  runApp(const HomePage());
 }
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
-    final x = ModalRoute.of(context)?.settings.arguments as int;
-    return BlocProvider(
-      create: (context) => QuizModel(1),
-      child: MaterialApp(
-        routes: {
-          "/": (context) => switch_q(),
-          "/quis_page": (context) => quizPage()
-        },
-      ),
+
+    return  const MaterialApp(
+      onGenerateRoute: RouteGenerator.generateRoute,
+home: switch_q(),
     );
+  }
+}
+class RouteGenerator {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case '/':
+        return MaterialPageRoute(builder: (_) => const switch_q());
+      case '/quiz_page':
+        final args = settings.arguments;
+        return MaterialPageRoute(builder: (_) => QuizPage(x: args as int));
+      default:
+        return MaterialPageRoute(builder: (_) => const switch_q());
+    }
   }
 }
