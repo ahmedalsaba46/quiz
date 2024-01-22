@@ -9,18 +9,67 @@ class switch_q extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        ElevatedButton(
-            onPressed: () =>Navigator.of(context).pushNamed("/quiz_page",arguments: 1),
-            child: Text("Country Quiz")),
-        ElevatedButton(
-            onPressed: () =>Navigator.of(context).pushNamed("/quiz_page",arguments: 2),
-
-            child: Text("Country Quiz")),
-        ElevatedButton(
-            onPressed: ()=>Navigator.pushNamed(context, "/quis_page", arguments: 3),
-            child: Text("Country Quiz")),
-      ]),
+      appBar: AppBar(
+        title: Text('Chose Quiz'),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                onPrimary: Colors.amber,
+              ),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed("/quiz_page", arguments: 1),
+              child: Text(
+                "Country Quiz 1",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 16.0),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                onPrimary: Colors.white,
+              ),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed("/quiz_page", arguments: 1),
+              child: Text(
+                "Country Quiz 2",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 16.0),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.orange,
+                onPrimary: Colors.white,
+              ),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed("/quiz_page", arguments: 1),
+              child: Text(
+                "Country Quiz 3",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
